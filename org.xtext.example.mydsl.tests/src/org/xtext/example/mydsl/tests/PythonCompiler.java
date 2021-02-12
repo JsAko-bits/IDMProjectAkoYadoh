@@ -34,7 +34,8 @@ public class PythonCompiler {
 				"result = regr_1.predict(X_test)";
 		String algoLinear = "reg_linear = linear_model.LinearRegression() \n"+
 					"reg_linear.fit(X_train, y_train) \n"+
-					"print(reg_linear) \n"+
+					"print(reg_linear.coef_) \n"+
+					"print(reg_linear.intercept_) \n"+
 					"result = reg_linear.predict(X_test) \n";
 			
 			if(algo == "SVM") {
@@ -91,7 +92,7 @@ public class PythonCompiler {
 		        System.out.println(o);
 		    }
 		    
-			String err; 
+			String err;
 			while ((err = stdError.readLine()) != null) {
 		        System.out.println(err);
 		    }

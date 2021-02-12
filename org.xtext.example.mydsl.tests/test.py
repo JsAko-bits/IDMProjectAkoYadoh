@@ -9,7 +9,8 @@ X_train, y_train = X[:training_samples], y[:training_samples]
 X_test, y_test = X[training_samples:], y[training_samples:] 
 reg_linear = linear_model.LinearRegression() 
 reg_linear.fit(X_train, y_train) 
-print(reg_linear) 
+print(reg_linear.coef_) 
+print(reg_linear.intercept_) 
 result = reg_linear.predict(X_test) 
  
 print(result) 

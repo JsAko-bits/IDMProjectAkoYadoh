@@ -24,8 +24,8 @@ public class RCompiler {
 	
 	private String getAlgo(String algo, int pourcentage) {
 		
-		String algoSVM = "model <- svm(Y_train ~ X_train)\r\n"
-				+ "result <- predict(model, X_test)\n"
+		String algoSVM = "model <- svm(y ~ X)\r\n"
+				+ "result <- predict(model, X)\n"
 				+ "print(result)";
 		
 		String algoTR = "df <- data.frame(predictive=X, prediction=y)\r\n"

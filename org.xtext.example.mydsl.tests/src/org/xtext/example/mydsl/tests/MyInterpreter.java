@@ -232,37 +232,6 @@ public class MyInterpreter {
 				System.out.print(" the expression for the input data as per alogorithm is ");
 				System.out.println(model2);
 			}
-/*			if(algo == "Linear") {
-				LinearRegression model = new weka.classifiers.functions.LinearRegression();
-				trainingData.setClassIndex(1);
-				testingData.setClassIndex(1);
-				model.buildClassifier(trainingData);
-				
-				Evaluation eval = new Evaluation(trainingData);
-				eval.evaluateModel(model, testingData);
-				
-				System.out.println("** Linear Regression Evaluation with Datasets **");
-				System.out.println(eval.toSummaryString());
-				System.out.print(" the expression for the input data as per alogorithm is ");
-				System.out.println(model);
-			}else if(algo == "SVM") {
-				LibSVM model = new LibSVM();
-				model.setOptions(new String[] {"B", "H"});
-				
-				trainingData.setClassIndex(1);
-				testingData.setClassIndex(1);
-				
-				model.buildClassifier(trainingData);
-				
-				Evaluation eval = new Evaluation(trainingData);
-				eval.evaluateModel(model, testingData);
-				
-				System.out.println("** Linear Regression Evaluation with Datasets **");
-				System.out.println(eval.toSummaryString());
-				System.out.print(" the expression for the input data as per alogorithm is ");
-				System.out.println(model);
-			}
-			System.out.println("OKKKKKKKKKKKKK");*/
 
 		}
 		
@@ -286,7 +255,7 @@ public class MyInterpreter {
 		this.model2 = model2;
 	}
 	
-	public void run() throws Exception {
+	public boolean run() throws Exception {
 		
 		String code2 = model2;
 		String ligne ="";
@@ -302,6 +271,7 @@ public class MyInterpreter {
 					}
 				}else {
 					System.out.println("PROBLEME AVEC "+ligne);
+					return false;
 				}
 				ligne = "";
 			}
@@ -309,6 +279,7 @@ public class MyInterpreter {
 		}
 		
 		e.process();
+		return true;
 		
 	}
 	
