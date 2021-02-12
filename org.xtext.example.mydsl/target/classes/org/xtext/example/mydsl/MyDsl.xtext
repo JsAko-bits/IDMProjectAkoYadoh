@@ -1,0 +1,25 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+Model:
+	regressions=Regression;
+	
+Regression:
+	fichier=Fichier
+	delimiteur=Delimiteur
+	'Algorithme' algorithme=Algorithme
+	predire=Predire
+;
+Fichier:
+	'Fichier' name=STRING
+;
+Delimiteur:
+	'Delimiteur' name=STRING
+;
+enum Algorithme:
+	TreeRegression = 'TR' | SVM = 'SVM' | Linear = 'Linear'
+;
+Predire:
+	'Predire' pourcentage=INT
+;

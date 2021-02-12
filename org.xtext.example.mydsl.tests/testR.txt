@@ -1,0 +1,24 @@
+library(rpart) 
+library(e1071)
+input_data = read.csv("data.txt", sep=",", header=TRUE, encoding="UTF-8") 
+cols = ncol(input_data) 
+rows = nrow(input_data) 
+nbre = floor(0.75*rows) 
+X = input_data[,-cols] 
+y = input_data[,cols] 
+X_train = X[c(1:nbre)] 
+Y_train = y[c(1:nbre)] 
+X_test = X[c(nbre+1:rows)] 
+X_test = X_test[!is.na(X_test)] 
+Y_test = y[c(nbre+1:rows)] 
+df <- data.frame(predictive=X, prediction=y)
+nb_learn <- floor((nrow(df)*0.75))
+df_train <- df[1:nb_learn,]
+df_test <- df[nb_learn+1:nrow(df),]
+df_tree <- rpart(y~X,data=df_train,
+		     control=rpart.control(minsplit=2,cp=0))
+df_treeOpt <- prune(df_tree,
+cp=df_tree$cptable[which.min(df_tree$cptable[,4]),1])
+df_testPredict<-predict(df_treeOpt, newdata=df_test)
+print(df_testPredict)
+ 
